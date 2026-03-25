@@ -1,0 +1,80 @@
+[user]
+	name = Jobin Kurian
+	email = jobink.dev@gmail.com
+
+[core]
+	excludesfile = /Users/JK/.gitignore_global
+	filemode = false
+	editor = vim
+	autocrlf = input
+	pager = bat --paging=always --style=plain
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+	default = current
+
+[fetch]
+	prune = true
+
+[merge]
+	conflictstyle = zdiff3
+
+[diff]
+	algorithm = histogram
+	colorMoved = default
+
+[rebase]
+	autoStash = true
+
+[rerere]
+	enabled = true
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = -version:refname
+
+[help]
+	autocorrect = prompt
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[alias]
+	s = status --short --branch
+	l = log --oneline --graph --decorate -20
+	la = log --oneline --graph --decorate --all -20
+	d = diff
+	ds = diff --staged
+	co = checkout
+	cb = checkout -b
+	cm = commit -m
+	ca = commit --amend --no-edit
+	p = push
+	pf = push --force-with-lease
+	pl = pull
+	undo = reset --soft HEAD~1
+	unstage = reset HEAD --
+	last = log -1 HEAD --stat
+	branches = branch -a --sort=-committerdate
+	tags = tag -l --sort=-version:refname
+	stash-all = stash push --include-untracked
+	wip = !git add -A && git commit -m 'wip'
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/JK/.stCommitMsg

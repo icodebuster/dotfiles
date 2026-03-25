@@ -1,0 +1,34 @@
+{
+  "editor.accessibilitySupport": "off",
+  "files.autoSave": "onFocusChange",
+  "workbench.colorTheme": "Default Dark Modern",
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "window.zoomLevel": 2,
+  "redhat.telemetry.enabled": false,
+  "explorer.confirmDelete": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "application.shellEnvironmentResolutionTimeout": 20,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "amazonQ.workspaceIndex": true,
+  "amazonQ.suppressPrompts": {
+    "codeWhispererConnectionExpired": true
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-http-request-post-response.instructions.md": true,
+    "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-http-request-pre-request.instructions.md": true,
+    "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-collections-post-response.instructions.md": true,
+    "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-collections-pre-request.instructions.md": true,
+    "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-folder-post-response.instructions.md": true,
+    "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-folder-pre-request.instructions.md": true
+  }
+}
