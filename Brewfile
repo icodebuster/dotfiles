@@ -1,7 +1,6 @@
 # Taps
 tap "antoniorodr/memo"
 tap "dart-lang/dart"
-tap "homebrew/services"
 tap "leoafarias/fvm"
 tap "nikitabobko/tap"
 tap "steipete/tap"
@@ -29,6 +28,7 @@ brew "git-extras"                   # Extra git utilities
 brew "gh"                           # GitHub CLI
 brew "duti"                         # Set default apps for file types on macOS
 brew "stow"                         # Symlink farm manager (for dotfiles)
+brew "gitkraken-cli"                # Git client CLI
 
 # Media and files
 brew "ffmpeg"                       # Audio/video processing toolkit
@@ -61,9 +61,6 @@ brew "watchman"                     # File watcher (used by React Native)
 # Dev - Java / Android
 brew "openjdk@17"                   # Java 17 runtime (used by gradle)
 brew "gradle"                       # Build automation tool (use ./gradlew per project)
-
-# Dev - Data
-brew "mysql"                        # Relational database
 
 # Dev - Other
 brew "awscli"                       # AWS command-line interface
@@ -103,6 +100,7 @@ cask "obsidian"                     # Markdown-based knowledge base
 cask "orbstack"                     # Fast Docker and Linux on macOS
 cask "provisionql"                  # QuickLook for provisioning profiles
 cask "steipete/tap/codexbar"        # Codex AI menu bar app
+cask "gitkraken"                    # Git client
 
 # ---------------------------------------------------------------------------
 # Redundant or rarely used — uncomment if needed

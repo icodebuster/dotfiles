@@ -14,9 +14,11 @@ This will:
 
 1. Install Homebrew (if missing)
 2. Install all packages from the `Brewfile`
-3. Symlink all configs to the right places via `stow --adopt`
-4. Optionally restore Cursor & VS Code settings and extensions
-5. Create a `~/.secrets` template for API keys
+3. Bail if there are uncommitted changes in package directories
+4. Optionally back up existing dotfiles before overwriting
+5. Symlink all configs to the right places via `stow --adopt`
+6. Optionally restore Cursor & VS Code settings and extensions
+7. Create a `~/.secrets` template for API keys
 
 ## Stow packages
 
@@ -24,14 +26,14 @@ Stow creates symlinks from this repo into two targets: `~/.config` and `$HOME`.
 
 ### `CONFIG_PKGS` → `~/.config`
 
-| Package     | Repo Path              | Symlink Target                       |
-| ----------- | ---------------------- | ------------------------------------ |
-| `aerospace` | `aerospace.toml`       | `~/.config/aerospace/aerospace.toml` |
-| `atuin`     | `atuin/config.toml`    | `~/.config/atuin/config.toml`        |
-| `ghostty`   | `ghostty/config`       | `~/.config/ghostty/config`           |
-| `starship`  | `starship.toml`        | `~/.config/starship/starship.toml`   |
-| `zellij`    | `zellij/config.kdl`    | `~/.config/zellij/config.kdl`        |
-| `zellij`    | `zellij/layouts/*.kdl` | `~/.config/zellij/layouts/*.kdl`     |
+| Package     | Repo Path              | Symlink Target                   |
+| ----------- | ---------------------- | -------------------------------- |
+| `aerospace` | `aerospace.toml`       | `~/.config/aerospace.toml`       |
+| `atuin`     | `atuin/config.toml`    | `~/.config/atuin/config.toml`    |
+| `ghostty`   | `ghostty/config`       | `~/.config/ghostty/config`       |
+| `starship`  | `starship.toml`        | `~/.config/starship.toml`        |
+| `zellij`    | `zellij/config.kdl`    | `~/.config/zellij/config.kdl`    |
+| `zellij`    | `zellij/layouts/*.kdl` | `~/.config/zellij/layouts/*.kdl` |
 
 ### `HOME_PKGS` → `$HOME`
 

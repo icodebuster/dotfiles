@@ -20,4 +20,4 @@ ngrok() {
 [[ -f /Users/JK/.dart-cli-completion/zsh-config.zsh ]] && . /Users/JK/.dart-cli-completion/zsh-config.zsh || true
 
 # OpenClaw Completion
-source "/Users/JK/.openclaw/completions/openclaw.zsh"
+[[ -f "$HOME/.openclaw/completions/openclaw.zsh" ]] && source "$HOME/.openclaw/completions/openclaw.zsh"
