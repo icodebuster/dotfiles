@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.autoSave": "onFocusChange",
+		"editor.fontLigatures": false,
+		"editor.fontFamily": "Hack Nerd Font Mono",
+		"editor.fontSize": 14
+	}
+}

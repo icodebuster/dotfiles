@@ -1,0 +1,71 @@
+---
+description: Stow and dotfiles structure conventions for adding and managing config packages
+alwaysApply: true
+---
+
+# Dotfiles Stow Convention
+
+This repo uses GNU Stow with two targets to manage symlinks.
+Packages are registered in `bootstrap.sh` via the `CONFIG_PKGS` and `HOME_PKGS` arrays.
+
+## Two-tier stow layout
+
+- **`~/.config` packages** (`CONFIG_PKGS`) — stow target: `~/.config`.
+  Files sit directly inside the package folder (flat) or one level deeper when the tool expects a subfolder under `~/.config`.
+  - `aerospace/aerospace.toml` → `~/.config/aerospace/aerospace.toml`
+  - `atuin/atuin/config.toml` → `~/.config/atuin/config.toml`
+  - `ghostty/ghostty/config` → `~/.config/ghostty/config`
+  - `starship/starship.toml` → `~/.config/starship.toml`
+  - `zellij/zellij/config.kdl` → `~/.config/zellij/config.kdl`
+
+- **`$HOME` packages** (`HOME_PKGS`) — stow target: `$HOME`.
+  Mirror the home directory tree from the package root. Can contain both `~/` dotfiles and `.config/` subdirectories.
+  - `git/.gitconfig` → `~/.gitconfig`
+  - `git/.gitignore_global` → `~/.gitignore_global`
+  - `zsh/.zshrc` → `~/.zshrc`
+  - `zsh/.config/zsh/*.zsh` → `~/.config/zsh/*.zsh`
+
+## Current packages
+
+| Array | Packages |
+|-------|----------|
+| `CONFIG_PKGS` | `aerospace`, `atuin`, `ghostty`, `starship`, `zellij` |
+| `HOME_PKGS` | `zsh`, `git` |
+
+## Non-stow directories
+
+These directories live in the repo but are **not** managed by stow:
+
+| Directory | Purpose |
+|-----------|---------|
+| `cursor/` | Cursor editor settings/extensions — managed by `scripts/editors.sh` |
+| `vscode/` | VS Code settings/extensions — managed by `scripts/editors.sh` |
+| `scripts/` | Helper scripts (e.g. `editors.sh`) |
+| `ssh/` | Placeholder (`ssh/.ssh/`), not wired into `bootstrap.sh` — stow manually if needed |
+
+## Choosing a target
+
+- Tool **only** has files under `~/.config/<tool>/` → use `CONFIG_PKGS` (flat package)
+- Tool has files in `~/` **or** a mix of `~/` and `~/.config/` → use `HOME_PKGS`
+
+## Adding a new config
+
+1. Create the package folder mirroring the system path:
+   - `~/.config/foo/config.toml` → `foo/config.toml` (flat, config target)
+   - `~/.foorc` → `foo/.foorc` (home target)
+   - Mix of both → `foo/.foorc` + `foo/.config/foo/settings` (home target)
+
+2. Add the package name to the correct array in `bootstrap.sh`.
+
+3. Stow with the adopt pattern — always follow `--adopt` with `git checkout` to prevent existing system files from overwriting repo versions:
+   ```
+   stow --adopt -t ~/.config foo && git checkout -- foo   # CONFIG_PKGS
+   stow --adopt -t ~        foo && git checkout -- foo   # HOME_PKGS
+   ```
+
+## Rules
+
+- Never nest `.config/<name>/` inside a package that targets `~/.config`
+- Keep package folders named after the tool (e.g., `atuin/`, `ghostty/`)
+- Never commit secrets, keys, or auth tokens — list them in `.gitignore`
+- Update `.stow-local-ignore` if adding repo-only files that should not be symlinked

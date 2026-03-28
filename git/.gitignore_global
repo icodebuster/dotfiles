@@ -14,7 +14,6 @@
 *.sublime-project
 .idea/
 .vscode/
-*.code-workspace
 
 # Environment and secrets
 .env
