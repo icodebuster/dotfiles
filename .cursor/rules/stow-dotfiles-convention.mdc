@@ -24,13 +24,15 @@ Packages are registered in `bootstrap.sh` via the `CONFIG_PKGS` and `HOME_PKGS` 
   - `git/.gitignore_global` → `~/.gitignore_global`
   - `zsh/.zshrc` → `~/.zshrc`
   - `zsh/.config/zsh/*.zsh` → `~/.config/zsh/*.zsh`
+  - `ssh/.ssh/config` → `~/.ssh/config`
 
 ## Current packages
 
 | Array | Packages |
 |-------|----------|
 | `CONFIG_PKGS` | `aerospace`, `atuin`, `ghostty`, `starship`, `zellij` |
-| `HOME_PKGS` | `zsh`, `git` |
+| `HOME_PKGS` | `zsh`, `git`, `ssh` |
+| `PRIVATE_PKG` | `dotfiles-private` (git submodule, stowed to `$HOME`) |
 
 ## Non-stow directories
 
@@ -41,7 +43,7 @@ These directories live in the repo but are **not** managed by stow:
 | `cursor/` | Cursor editor settings/extensions — managed by `scripts/editors.sh` |
 | `vscode/` | VS Code settings/extensions — managed by `scripts/editors.sh` |
 | `scripts/` | Helper scripts (e.g. `editors.sh`) |
-| `ssh/` | Placeholder (`ssh/.ssh/`), not wired into `bootstrap.sh` — stow manually if needed |
+| `dotfiles-private/` | Git submodule — private repo with `.ssh/config.private`, `.ssh/*.pem`, `.secrets` |
 
 ## Choosing a target
 
@@ -63,9 +65,21 @@ These directories live in the repo but are **not** managed by stow:
    stow --adopt -t ~        foo && git checkout -- foo   # HOME_PKGS
    ```
 
+## Private submodule (`dotfiles-private`)
+
+A separate private Git repo added as a submodule at the repo root.
+Stowed to `$HOME` like a `HOME_PKGS` package. Holds sensitive files:
+
+- `.ssh/config.private` — host definitions included by `ssh/.ssh/config`
+- `.ssh/*.pem` — SSH private keys (bootstrap runs `chmod 400` after stow)
+- `.secrets` — shell env secrets sourced by zsh
+
+Bootstrap detects the submodule and stows it automatically.
+On a fresh clone, initialize with: `git submodule update --init`
+
 ## Rules
 
 - Never nest `.config/<name>/` inside a package that targets `~/.config`
 - Keep package folders named after the tool (e.g., `atuin/`, `ghostty/`)
-- Never commit secrets, keys, or auth tokens — list them in `.gitignore`
+- Never commit secrets, keys, or auth tokens — put them in `dotfiles-private`
 - Update `.stow-local-ignore` if adding repo-only files that should not be symlinked

@@ -5,10 +5,12 @@ Personal macOS dotfiles managed with [GNU Stow](https://www.gnu.org/software/sto
 ## Quick start (new machine)
 
 ```bash
-git clone git@github.com:icodebuster/dotfiles.git ~/dotfiles
+git clone --recurse-submodules git@github.com:icodebuster/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./bootstrap.sh
 ```
+
+> If you already cloned without `--recurse-submodules`, run `git submodule update --init` before bootstrapping.
 
 This will:
 
@@ -17,8 +19,9 @@ This will:
 3. Bail if there are uncommitted changes in package directories
 4. Optionally back up existing dotfiles before overwriting
 5. Symlink all configs to the right places via `stow --adopt`
-6. Optionally restore Cursor & VS Code settings and extensions
-7. Create a `~/.secrets` template for API keys
+6. Stow the private submodule (if initialized) and fix PEM file permissions
+7. Optionally restore Cursor & VS Code settings and extensions
+8. Create a `~/.secrets` template if not provided by the private submodule
 
 ## Stow packages
 
@@ -43,6 +46,19 @@ Stow creates symlinks from this repo into two targets: `~/.config` and `$HOME`.
 | `git`   | `.gitignore_global` | `~/.gitignore_global` |
 | `zsh`   | `.zshrc`            | `~/.zshrc`            |
 | `zsh`   | `.config/zsh/*.zsh` | `~/.config/zsh/*.zsh` |
+| `ssh`   | `.ssh/config`       | `~/.ssh/config`       |
+
+### `dotfiles-private` (git submodule) → `$HOME`
+
+A separate **private** repo added as a submodule. Holds sensitive files that should not be in a public repo.
+
+| File                | Symlink Target         | Purpose                          |
+| ------------------- | ---------------------- | -------------------------------- |
+| `.ssh/config.private` | `~/.ssh/config.private` | SSH host definitions (IPs, users, key paths) |
+| `.ssh/*.pem`        | `~/.ssh/*.pem`         | SSH private keys                 |
+| `.secrets`          | `~/.secrets`           | Shell environment secrets        |
+
+The public `ssh/.ssh/config` uses `Include ~/.ssh/config.private` to pull in host definitions from the private submodule. Bootstrap runs `chmod 400` on PEM files after stowing since Git does not preserve file permissions.
 
 ## Editor configs (Cursor & VS Code)
 
@@ -85,7 +101,11 @@ cd ~/dotfiles
 stow -t "$HOME/.config" aerospace atuin ghostty starship zellij
 
 # Link $HOME packages
-stow -t "$HOME" zsh git
+stow -t "$HOME" zsh git ssh
+
+# Link private submodule (after git submodule update --init)
+stow -t "$HOME" dotfiles-private
+chmod 400 ~/.ssh/*.pem
 
 # Unlink a package
 stow -D -t "$HOME/.config" ghostty

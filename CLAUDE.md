@@ -10,7 +10,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 # Restow all symlinks without reinstalling Homebrew packages
 stow --adopt -t ~/.config aerospace atuin ghostty starship zellij && git checkout -- .
-stow --adopt -t ~ zsh git && git checkout -- .
+stow --adopt -t ~ zsh git ssh && git checkout -- .
+
+# Restow private submodule (after git submodule update --init)
+stow --adopt -t ~ dotfiles-private && git -C dotfiles-private checkout -- .
+chmod 400 ~/.ssh/*.pem
 
 # Sync editor settings (Cursor & VS Code)
 ./scripts/editors.sh export   # pull from app → repo
@@ -25,13 +29,18 @@ GNU Stow manages symlinks using a two-tier strategy defined in `bootstrap.sh`:
 - `aerospace`, `atuin`, `ghostty`, `starship`, `zellij`
 
 **HOME_PKGS** — packages that mirror the `$HOME` tree. Can contain both `~/` dotfiles and `~/.config/` subdirectories in the same package.
-- `zsh`, `git`
+- `zsh`, `git`, `ssh` (`ssh/.ssh/config` → `~/.ssh/config`)
 
 **Decision rule**: If a tool uses *only* `~/.config/<tool>/` → `CONFIG_PKGS`. If it uses `~/` dotfiles or a mix → `HOME_PKGS`.
 
 **Bootstrap adopt pattern**: `stow --adopt` is always followed immediately by `git checkout -- .` to prevent existing system files from overwriting repo versions.
 
-**`ssh/` package**: Exists as a placeholder (`ssh/.ssh/`) but is not yet wired into `bootstrap.sh`. Stow manually if needed: `stow --adopt -t ~ ssh && git checkout -- .`
+**`dotfiles-private` submodule** — a separate **private** Git repo added as a submodule at the repo root. Stowed to `$HOME` like a `HOME_PKGS` package. Contains sensitive files that should not be in a public repo:
+- `.ssh/config.private` — SSH host definitions (IPs, usernames, key paths)
+- `.ssh/*.pem` — SSH private keys
+- `.secrets` — shell environment secrets (tokens, API keys)
+
+The `ssh/` package commits only the public SSH config (`ssh/.ssh/config`) which `Include`s `~/.ssh/config.private` from the private submodule. Bootstrap automatically runs `chmod 400` on PEM files after stowing since Git doesn't preserve permissions.
 
 ## Adding a New Config Package
 

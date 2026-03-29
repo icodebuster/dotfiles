@@ -25,7 +25,8 @@ if [[ "$brew_answer" =~ ^[Yy]$ ]]; then
 fi
 
 CONFIG_PKGS=(aerospace atuin ghostty starship zellij)
-HOME_PKGS=(zsh git)
+HOME_PKGS=(zsh git ssh)
+PRIVATE_PKG="dotfiles-private"
 
 if ! command -v stow &>/dev/null; then
   echo "ERROR: stow is not installed (needed to create symlinks)." >&2
@@ -75,19 +76,31 @@ stow --adopt -R -v -t "$HOME/.config" "${CONFIG_PKGS[@]}"
 stow --adopt -R -v -t "$HOME" "${HOME_PKGS[@]}"
 git -C "$DOTFILES_DIR" checkout -- "${CONFIG_PKGS[@]}" "${HOME_PKGS[@]}"
 
+# Private submodule (optional — skip if not cloned with --recurse-submodules)
+if [[ -f "$DOTFILES_DIR/$PRIVATE_PKG/.ssh/config.private" ]]; then
+  echo "==> Stowing private dotfiles..."
+  stow --adopt -R -v -t "$HOME" "$PRIVATE_PKG"
+  git -C "$DOTFILES_DIR/$PRIVATE_PKG" checkout -- .
+  chmod 400 "$HOME"/.ssh/*.pem 2>/dev/null || true
+else
+  echo "==> Skipping private dotfiles (submodule not initialized)."
+  echo "    Run: git submodule update --init"
+fi
+
 # Restore editor settings (Cursor, VS Code)
 read -rp "==> Restore editor settings and extensions? [y/N] " editor_answer
 if [[ "$editor_answer" =~ ^[Yy]$ ]]; then
   "$DOTFILES_DIR/scripts/editors.sh" restore
 fi
 
-# Set up secrets template if it doesn't exist
+# Set up secrets template if not provided by private submodule
 if [[ ! -f "$HOME/.secrets" ]]; then
   cat > "$HOME/.secrets" <<'EOF'
 export GITHUB_USERNAME=
 export GITHUB_TOKEN=
 EOF
-  echo "==> Created ~/.secrets — fill in your values."
+  echo "==> Created ~/.secrets template — fill in your values."
+  echo "    Or add .secrets to the dotfiles-private submodule."
 fi
 
 echo "==> Done! Restart your shell or run: source ~/.zshrc"
