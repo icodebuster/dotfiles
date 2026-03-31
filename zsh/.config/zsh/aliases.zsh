@@ -16,6 +16,7 @@ alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # ----- zsh config -----
 alias editz="cursor ~/.zshrc"
+alias dot='cd ~/.dotfiles && vc'
 alias srcz="source ~/.zshrc"
 alias clear-zsh-cache='rm -rf ~/.cache/zsh-eval-cache && echo "Cleared. Open a new terminal to regenerate."'
 
