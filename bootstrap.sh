@@ -8,6 +8,31 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+CONFIG_PKGS=(aerospace atuin ghostty starship zellij)
+HOME_PKGS=(zsh git ssh)
+PRIVATE_PKG="dotfiles-private"
+
+# --clean: remove all stow-managed symlinks and exit
+if [[ "${1:-}" == "--clean" ]]; then
+  echo "==> Removing stow-managed symlinks..."
+  cd "$DOTFILES_DIR"
+
+  if ! command -v stow &>/dev/null; then
+    echo "ERROR: stow is not installed." >&2
+    exit 1
+  fi
+
+  stow -v -D -t "$HOME/.config" "${CONFIG_PKGS[@]}" 2>&1 || true
+  stow -v -D -t "$HOME" "${HOME_PKGS[@]}" 2>&1 || true
+
+  if [[ -d "$DOTFILES_DIR/$PRIVATE_PKG" ]]; then
+    stow -v -D -t "$HOME" "$PRIVATE_PKG" 2>&1 || true
+  fi
+
+  echo "==> Clean complete. All stow symlinks removed."
+  exit 0
+fi
+
 echo "==> Setting up dotfiles from $DOTFILES_DIR"
 
 # Install Homebrew if missing
@@ -23,10 +48,6 @@ if [[ "$brew_answer" =~ ^[Yy]$ ]]; then
   echo "==> Installing missing Homebrew packages..."
   brew bundle --no-upgrade --file="$DOTFILES_DIR/Brewfile"
 fi
-
-CONFIG_PKGS=(aerospace atuin ghostty starship zellij)
-HOME_PKGS=(zsh git ssh)
-PRIVATE_PKG="dotfiles-private"
 
 if ! command -v stow &>/dev/null; then
   echo "ERROR: stow is not installed (needed to create symlinks)." >&2
