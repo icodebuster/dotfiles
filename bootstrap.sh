@@ -92,15 +92,4 @@ read -rp "==> Restore editor settings and extensions? [y/N] " editor_answer
 if [[ "$editor_answer" =~ ^[Yy]$ ]]; then
   "$DOTFILES_DIR/scripts/editors.sh" restore
 fi
-
-# Set up secrets template if not provided by private submodule
-if [[ ! -f "$HOME/.secrets" ]]; then
-  cat > "$HOME/.secrets" <<'EOF'
-export GITHUB_USERNAME=
-export GITHUB_TOKEN=
-EOF
-  echo "==> Created ~/.secrets template — fill in your values."
-  echo "    Or add .secrets to the dotfiles-private submodule."
-fi
-
 echo "==> Done! Restart your shell or run: source ~/.zshrc"
