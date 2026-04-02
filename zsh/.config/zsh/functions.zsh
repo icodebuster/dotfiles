@@ -63,6 +63,19 @@ dev() {
     zellij --layout dev
 }
 
+screenshot-location() {
+    local default="$HOME/_Work/Screenshots"
+    local dir="$1"
+    if [[ -z "$dir" ]]; then
+        vared -p "Set screenshot location [$default]: " dir
+        dir="${dir:-$default}"
+    fi
+    mkdir -p "$dir"
+    defaults write com.apple.screencapture location "$dir"
+    killall SystemUIServer
+    echo "Screenshot location set to: $dir"
+}
+
 smartech-add-device() {
     local url="${1:?Usage: smartech-td <smartech://...url>}"
     xcrun simctl openurl booted "$url"

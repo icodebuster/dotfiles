@@ -65,3 +65,7 @@ alias smtf="cd ~/_Work/JK/Area51/NodeJS/Smartech/frontend && cursor ."
 alias pnserver='cd ~/_Work/Code/_Smartech/_Tools/PNServer-Local/smt-backend && npm run start:dev'
 alias getfcm='cd ~/_Work/Code/_Smartech/_Tools/FCM-v1 && node getToken.js'
 alias updatepp='bundle exec fastlane --env SmartechApp && bundle exec fastlane --env SmartechNudgesApp'
+alias jkios='cd ~/_Work/Code/_Smartech/Native/Smartech-iOS-SDK-Dev && vc'
+
+# ----- Personal Projects -----
+alias oss='cd ~/_Work/Code/OpenSource'

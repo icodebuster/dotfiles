@@ -29,6 +29,7 @@ brew "gh"                           # GitHub CLI
 brew "duti"                         # Set default apps for file types on macOS
 brew "stow"                         # Symlink farm manager (for dotfiles)
 brew "gitkraken-cli"                # Git client CLI
+brew "direnv"                       # Environment variable manager loader that loads .envrc on the current directory.
 
 # Media and files
 brew "ffmpeg"                       # Audio/video processing toolkit
