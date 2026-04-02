@@ -12,7 +12,41 @@ CONFIG_PKGS=(aerospace atuin ghostty starship zellij)
 HOME_PKGS=(zsh git ssh)
 PRIVATE_PKG="dotfiles-private"
 
-# --clean: remove all stow-managed symlinks and exit
+# Recursively remove targets that would conflict with stow.
+# - Foreign symlinks (not pointing into $DOTFILES_DIR): removed
+# - Real files where the package has a corresponding entry: removed
+# - Real directories shared by both package and target: descended into (safe
+#   for dirs like ~/.config and ~/.ssh that contain unrelated files)
+_remove_stow_conflicts() {
+  local target="$1"; shift
+  for pkg in "$@"; do
+    _remove_conflicts_in "$DOTFILES_DIR/$pkg" "$target"
+  done
+}
+_remove_conflicts_in() {
+  local pkg_dir="$1" target_dir="$2"
+  local entry
+  for entry in "$pkg_dir"/* "$pkg_dir"/.*; do
+    [[ "$(basename "$entry")" == "." || "$(basename "$entry")" == ".." ]] && continue
+    [[ -e "$entry" || -L "$entry" ]] || continue
+    local dest="$target_dir/$(basename "$entry")"
+    [[ -e "$dest" || -L "$dest" ]] || continue
+    if [[ -L "$dest" ]]; then
+      local resolved
+      resolved="$(realpath "$dest" 2>/dev/null)" || true
+      [[ "$resolved" == "$DOTFILES_DIR/"* ]] && continue
+      echo "  Removing conflicting target: $dest"
+      rm -f "$dest"
+    elif [[ -d "$entry" && -d "$dest" ]]; then
+      _remove_conflicts_in "$entry" "$dest"
+    else
+      echo "  Removing conflicting target: $dest"
+      rm -rf "$dest"
+    fi
+  done
+}
+
+# --clean: remove all stow-managed symlinks and conflicting targets, then exit
 if [[ "${1:-}" == "--clean" ]]; then
   echo "==> Removing stow-managed symlinks..."
   cd "$DOTFILES_DIR"
@@ -27,6 +61,13 @@ if [[ "${1:-}" == "--clean" ]]; then
 
   if [[ -d "$DOTFILES_DIR/$PRIVATE_PKG" ]]; then
     stow -v -D -t "$HOME" "$PRIVATE_PKG" 2>&1 || true
+  fi
+
+  echo "==> Removing targets that would conflict with stow..."
+  _remove_stow_conflicts "$HOME/.config" "${CONFIG_PKGS[@]}"
+  _remove_stow_conflicts "$HOME" "${HOME_PKGS[@]}"
+  if [[ -d "$DOTFILES_DIR/$PRIVATE_PKG" ]]; then
+    _remove_stow_conflicts "$HOME" "$PRIVATE_PKG"
   fi
 
   echo "==> Clean complete. All stow symlinks removed."
@@ -93,6 +134,8 @@ fi
 
 echo "==> Stowing dotfiles (repo always wins)..."
 cd "$DOTFILES_DIR"
+_remove_stow_conflicts "$HOME/.config" "${CONFIG_PKGS[@]}"
+_remove_stow_conflicts "$HOME" "${HOME_PKGS[@]}"
 stow --adopt -R -v -t "$HOME/.config" "${CONFIG_PKGS[@]}"
 stow --adopt -R -v -t "$HOME" "${HOME_PKGS[@]}"
 git -C "$DOTFILES_DIR" checkout -- "${CONFIG_PKGS[@]}" "${HOME_PKGS[@]}"
@@ -100,6 +143,7 @@ git -C "$DOTFILES_DIR" checkout -- "${CONFIG_PKGS[@]}" "${HOME_PKGS[@]}"
 # Private submodule (optional — skip if not cloned with --recurse-submodules)
 if [[ -f "$DOTFILES_DIR/$PRIVATE_PKG/.ssh/config.private" ]]; then
   echo "==> Stowing private dotfiles..."
+  _remove_stow_conflicts "$HOME" "$PRIVATE_PKG"
   stow --adopt -R -v -t "$HOME" "$PRIVATE_PKG"
   git -C "$DOTFILES_DIR/$PRIVATE_PKG" checkout -- .
   chmod 400 "$HOME"/.ssh/*.pem 2>/dev/null || true
