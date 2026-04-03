@@ -72,8 +72,17 @@ screenshot-location() {
     fi
     mkdir -p "$dir"
     defaults write com.apple.screencapture location "$dir"
+
+    local reply set_jpeg
+    read -r "reply?Also set screenshot format to JPEG (smaller files than PNG)? [y/N] "
+    if [[ "${reply:l}" == y || "${reply:l}" == yes ]]; then
+        defaults write com.apple.screencapture type jpg
+        set_jpeg=1
+    fi
+
     killall SystemUIServer
     echo "Screenshot location set to: $dir"
+    [[ -n "$set_jpeg" ]] && echo "Screenshot format set to: JPEG"
 }
 
 smartech-add-device() {
