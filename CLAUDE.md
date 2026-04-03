@@ -19,6 +19,9 @@ chmod 400 ~/.ssh/*.pem
 # Sync editor settings (Cursor & VS Code)
 ./scripts/editors.sh export   # pull from app → repo
 ./scripts/editors.sh restore  # push from repo → app + install extensions
+
+# Dropbox: xattr ignore for common build/cache dirs (zsh: `dropbox-ignore` [path])
+# ./scripts/dropbox-ignore.sh          # cwd, or: ./scripts/dropbox-ignore.sh ~/proj
 ```
 
 ## Package Architecture
@@ -69,7 +72,7 @@ The `ssh/` package commits only the public SSH config (`ssh/.ssh/config`) which 
 
 ## Editor Configs (Cursor & VS Code)
 
-These are **not stow-managed** because macOS stores them in `~/Library/Application Support/`. The `scripts/editors.sh` script handles export/restore:
+These are **not stow-managed** because macOS stores them in `~/Library/Application Support/`. The `scripts/editors.sh` script handles export/restore. Other helpers in `scripts/` include `dropbox-ignore.sh` (sets `com.dropbox.ignored` on common build/cache dirs; shell command `dropbox-ignore` once `DOTFILES_DIR` is loaded).
 
 - Cursor: `~/Library/Application Support/Cursor/User/`
 - VS Code: `~/Library/Application Support/Code/User/`

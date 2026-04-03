@@ -89,3 +89,11 @@ smartech-add-device() {
     local url="${1:?Usage: smartech-td <smartech://...url>}"
     xcrun simctl openurl booted "$url"
 }
+
+dropbox-ignore() {
+    if [[ -z "${DOTFILES_DIR:-}" ]]; then
+        echo "DOTFILES_DIR is not set." >&2
+        return 1
+    fi
+    command "$DOTFILES_DIR/scripts/dropbox-ignore.sh" "$@"
+}
