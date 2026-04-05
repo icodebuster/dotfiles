@@ -24,27 +24,79 @@ xc() {
     fi
 }
 
-# Function to open VSCode workspace or project in the current directory.
+# Open or create a VS Code workspace in the current directory.
 vc() {
-    local editor
-    if (( $+commands[cursor] )); then
-        editor="cursor"
-    elif (( $+commands[code] )); then
-        editor="code"
-    else
-        echo "No editor found (tried cursor, code)." >&2
+    if ! (( $+commands[code] )); then
+        echo "VS Code (code) not found." >&2
         return 1
     fi
 
     local ws=$(find . -maxdepth 1 -name '*.code-workspace' -print -quit)
 
     if [[ -n "$ws" ]]; then
-        echo "Opening workspace: ${ws} (${editor})"
-        "$editor" "$ws"
-    else
-        echo "No workspace found, opening folder (${editor})"
-        "$editor" .
+        echo "Opening workspace: ${ws}"
+        code "$ws"
+        return
     fi
+
+    local reply
+    read -r "reply?No workspace found. Create one? [Y/n] "
+    if [[ "${reply:l}" == n || "${reply:l}" == no ]]; then
+        echo "Opening folder instead."
+        code .
+        return
+    fi
+
+    local default="${PWD:t}"
+    local name
+    read -r "name?Workspace name [$default]: "
+    name="${name:-$default}"
+
+    local tpl="$DOTFILES_DIR/scripts/templates/code-workspace-template.json"
+    if [[ ! -f "$tpl" ]]; then
+        echo "Template not found: $tpl" >&2
+        return 1
+    fi
+
+    local file="${name}.code-workspace"
+    cp "$tpl" "$file"
+    echo "Created ${file}"
+    code "$file"
+}
+
+# Open or create a Cursor workspace in the current directory.
+cc() {
+    local ws=$(find . -maxdepth 1 -name '*.code-workspace' -print -quit)
+
+    if [[ -n "$ws" ]]; then
+        echo "Opening workspace: ${ws}"
+        cursor "$ws"
+        return
+    fi
+
+    local reply
+    read -r "reply?No workspace found. Create one? [Y/n] "
+    if [[ "${reply:l}" == n || "${reply:l}" == no ]]; then
+        echo "Opening folder instead."
+        cursor .
+        return
+    fi
+
+    local default="${PWD:t}"
+    local name
+    read -r "name?Workspace name [$default]: "
+    name="${name:-$default}"
+
+    local tpl="$DOTFILES_DIR/scripts/templates/code-workspace-template.json"
+    if [[ ! -f "$tpl" ]]; then
+        echo "Template not found: $tpl" >&2
+        return 1
+    fi
+
+    local file="${name}.code-workspace"
+    cp "$tpl" "$file"
+    echo "Created ${file}"
+    cursor "$file"
 }
 
 git-local-email() {
