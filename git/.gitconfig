@@ -1,6 +1,7 @@
 [user]
 	name = Jobin Kurian
-	email = jobink.dev@gmail.com
+	email = jobin@xzibit.com.au
+	signingKey = 
 
 [core]
 	excludesfile = /Users/JK/.gitignore_global
@@ -40,6 +41,7 @@
 
 [tag]
 	sort = -version:refname
+	forceSignAnnotated = false
 
 [help]
 	autocorrect = prompt
@@ -78,3 +80,12 @@
 	trustExitCode = true
 [commit]
 	template = /Users/JK/.stCommitMsg
+	gpgSign = false
+[gpg]
+	format = openpgp
+	program = gpg
+[gpg "ssh"]
+	program = 
+	allowedSignersFile = 
+[bulkworkspaces]
+	xzibit-apps = .

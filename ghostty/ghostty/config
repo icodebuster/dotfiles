@@ -14,6 +14,9 @@ font-size = 14
 
 # Start Directory
 working-directory = /Users/JK/_Work
+window-inherit-working-directory = false
+tab-inherit-working-directory = true
+split-inherit-working-directory = true
 
 # Quick terminal (global)
 keybind = global:ctrl+alt+backquote=toggle_quick_terminal

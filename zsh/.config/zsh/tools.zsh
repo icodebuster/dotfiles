@@ -34,3 +34,7 @@ _cached_eval atuin 'atuin init zsh'
 
 # ----- Direnv -----
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
+
+
+# ----- opencode -----
+export PATH=/Users/JK/.opencode/bin:$PATH
