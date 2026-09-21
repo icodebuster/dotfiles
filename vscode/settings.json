@@ -1,7 +1,7 @@
 {
   "editor.accessibilitySupport": "off",
   "files.autoSave": "onFocusChange",
-  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.colorTheme": "Dark Modern",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.fontFamily": "MesloLGS NF",
   "terminal.integrated.env.osx": {
@@ -24,11 +24,23 @@
   },
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
+    ".claude/rules": true,
+    "~/.copilot/instructions": true,
+    "~/.claude/rules": true,
     "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-http-request-post-response.instructions.md": true,
     "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-http-request-pre-request.instructions.md": true,
     "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-collections-post-response.instructions.md": true,
     "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-collections-pre-request.instructions.md": true,
     "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-folder-post-response.instructions.md": true,
-    "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-folder-pre-request.instructions.md": true
-  }
+    "/var/folders/rc/5ppkwr2j54712bd9lf7p5t5h0000gn/T/postman-folder-pre-request.instructions.md": true,
+    "/var/folders/g0/60jx_pxs7q10jz5yh8fvmwy00000gp/T/postman-collections-post-response.instructions.md": true,
+    "/var/folders/g0/60jx_pxs7q10jz5yh8fvmwy00000gp/T/postman-collections-pre-request.instructions.md": true,
+    "/var/folders/g0/60jx_pxs7q10jz5yh8fvmwy00000gp/T/postman-folder-post-response.instructions.md": true,
+    "/var/folders/g0/60jx_pxs7q10jz5yh8fvmwy00000gp/T/postman-folder-pre-request.instructions.md": true,
+    "/var/folders/g0/60jx_pxs7q10jz5yh8fvmwy00000gp/T/postman-http-request-post-response.instructions.md": true,
+    "/var/folders/g0/60jx_pxs7q10jz5yh8fvmwy00000gp/T/postman-http-request-pre-request.instructions.md": true
+  },
+  "claudeCode.preferredLocation": "panel", 
+  "security.workspace.trust.untrustedFiles": "open",
+  "claudeCode.hideOnboarding": true
 }

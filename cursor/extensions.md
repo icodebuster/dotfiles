@@ -7,6 +7,8 @@ This document lists all extensions used in Cursor, organized by category.
 | Extension | Description | Link |
 |-----------|-------------|------|
 | `anthropic.claude-code` | Claude AI assistant for code generation and chat | [Marketplace](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code) |
+| `openai.chatgpt` | ChatGPT AI assistant for code generation and chat | [Marketplace](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt) |
+| `saoudrizwan.claude-dev` | Claude AI development assistant (Cline) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev) |
 | `anysphere.cursorpyright` | Enhanced Python language server for Cursor | [Marketplace](https://marketplace.visualstudio.com/items?itemName=anysphere.cursorpyright) |
 | `ai-dl.enlighter` | Code syntax highlighting enhancement | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ai-dl.enlighter) |
 
@@ -20,7 +22,7 @@ This document lists all extensions used in Cursor, organized by category.
 | `vue.volar` | Vue.js language support and tooling | [Marketplace](https://marketplace.visualstudio.com/items?itemName=vue.volar) |
 | `hollowtree.vue-snippets` | Vue.js code snippets | [Marketplace](https://marketplace.visualstudio.com/items?itemName=hollowtree.vue-snippets) |
 | `nuxt.mdc` | MDC (Markdown Components) support for Nuxt | [Marketplace](https://marketplace.visualstudio.com/items?itemName=nuxt.mdc) |
-| `ionic.ionic` | Ionic framework development support | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ionic.ionic) |
+| `nuxtr.nuxtr-vscode` | Nuxt development tools and utilities | [Marketplace](https://marketplace.visualstudio.com/items?itemName=nuxtr.nuxtr-vscode) |
 
 ### Backend & Systems
 | Extension | Description | Link |
@@ -28,6 +30,7 @@ This document lists all extensions used in Cursor, organized by category.
 | `golang.go` | Go language support with debugging and tools | [Marketplace](https://marketplace.visualstudio.com/items?itemName=golang.go) |
 | `ms-python.python` | Python language support and debugging | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.python) |
 | `ms-python.debugpy` | Python debugger | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy) |
+| `ms-python.vscode-python-envs` | Python environment management | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs) |
 | `rebornix.ruby` | Ruby language support | [Marketplace](https://marketplace.visualstudio.com/items?itemName=rebornix.ruby) |
 | `wingrunr21.vscode-ruby` | Enhanced Ruby development tools | [Marketplace](https://marketplace.visualstudio.com/items?itemName=wingrunr21.vscode-ruby) |
 | `jnbt.vscode-rufo` | Ruby code formatter | [Marketplace](https://marketplace.visualstudio.com/items?itemName=jnbt.vscode-rufo) |
@@ -39,8 +42,6 @@ This document lists all extensions used in Cursor, organized by category.
 ### .NET Development
 | Extension | Description | Link |
 |-----------|-------------|------|
-| `ms-dotnettools.csdevkit` | C# development kit | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) |
-| `ms-dotnettools.csharp` | C# language support | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) |
 | `ms-dotnettools.vscode-dotnet-runtime` | .NET runtime for VS Code extensions | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscode-dotnet-runtime) |
 
 ## DevOps & Infrastructure
@@ -48,9 +49,10 @@ This document lists all extensions used in Cursor, organized by category.
 | Extension | Description | Link |
 |-----------|-------------|------|
 | `ms-azuretools.vscode-docker` | Docker container management and support | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) |
+| `ms-azuretools.vscode-containers` | Container development support (Dev Containers companion) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-containers) |
 | `ms-kubernetes-tools.vscode-kubernetes-tools` | Kubernetes cluster management | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools) |
-| `ms-vscode-remote.remote-containers` | Development inside Docker containers | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) |
-| `anysphere.remote-containers` | Cursor-specific remote container support | [Marketplace](https://marketplace.visualstudio.com/items?itemName=anysphere.remote-containers) |
+| `anysphere.remote-containers` | Cursor-specific remote container support (fork of Remote-Containers) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=anysphere.remote-containers) |
+| `anysphere.remote-ssh` | Cursor-specific remote SSH support (fork of Remote-SSH) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=anysphere.remote-ssh) |
 
 ## Data & Configuration
 
@@ -60,6 +62,7 @@ This document lists all extensions used in Cursor, organized by category.
 | `redhat.vscode-xml` | XML language support and validation | [Marketplace](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml) |
 | `redhat.vscode-yaml` | YAML language support and validation | [Marketplace](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) |
 | `tamasfe.even-better-toml` | Enhanced TOML file support | [Marketplace](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) |
+| `mechatroner.rainbow-csv` | CSV/TSV column highlighting and query tools | [Marketplace](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) |
 
 ## Documentation & Markdown
 
@@ -69,6 +72,7 @@ This document lists all extensions used in Cursor, organized by category.
 | `shd101wyy.markdown-preview-enhanced` | Advanced Markdown preview with features | [Marketplace](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced) |
 | `bierner.markdown-mermaid` | Mermaid diagram support in Markdown | [Marketplace](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid) |
 | `davidanson.vscode-markdownlint` | Markdown linting and style checking | [Marketplace](https://marketplace.visualstudio.com/items?itemName=davidanson.vscode-markdownlint) |
+| `james-yu.latex-workshop` | LaTeX typesetting and PDF preview | [Marketplace](https://marketplace.visualstudio.com/items?itemName=james-yu.latex-workshop) |
 
 ## Git & Version Control
 
@@ -91,7 +95,6 @@ This document lists all extensions used in Cursor, organized by category.
 | Extension | Description | Link |
 |-----------|-------------|------|
 | `ms-vscode.makefile-tools` | Makefile support and IntelliSense | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools) |
-| `postman.postman-for-vscode` | API testing and development | [Marketplace](https://marketplace.visualstudio.com/items?itemName=postman.postman-for-vscode) |
 | `ritwickdey.liveserver` | Live reload server for web development | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ritwickdey.liveserver) |
 | `techer.open-in-browser` | Quick browser opening for HTML files | [Marketplace](https://marketplace.visualstudio.com/items?itemName=techer.open-in-browser) |
 | `dorianmassoulier.repomix-runner` | Repository packaging and analysis | [Marketplace](https://marketplace.visualstudio.com/items?itemName=dorianmassoulier.repomix-runner) |
@@ -101,18 +104,14 @@ This document lists all extensions used in Cursor, organized by category.
 |-----------|-------------|------|
 | `johnpapa.vscode-peacock` | Workspace color customization | [Marketplace](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock) |
 
-### Terminal & Shell
-| Extension | Description | Link |
-|-----------|-------------|------|
-| `withfig.fig` | Terminal autocomplete and command assistance | [Marketplace](https://marketplace.visualstudio.com/items?itemName=withfig.fig) |
-
 ## Extension Count
 
-**Total**: 47 extensions
+**Total**: 49 extensions
 
 ## Usage Notes
 
-- Heavy focus on AI assistance with Claude integration
+- Heavy focus on AI assistance (Claude, ChatGPT, Cline) plus Cursor's own Pyright/Remote-SSH/Remote-Containers forks
 - Comprehensive language support for web, mobile, and backend development
-- Strong DevOps tooling with Docker and Kubernetes support
+- Strong DevOps tooling with Docker, Containers, and Kubernetes support
 - Enhanced productivity tools for code navigation and formatting
+- Kept in sync with VS Code's extension set (see `vscode/extensions.md`) — differences are limited to Cursor's own forks of Remote-SSH/Remote-Containers/Pyright, which aren't published to VS Code's marketplace

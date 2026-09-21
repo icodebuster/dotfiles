@@ -22,7 +22,7 @@ alias clear-zsh-cache='rm -rf ~/.cache/zsh-eval-cache && echo "Cleared. Open a n
 # ----- navigation -----
 # General
 alias work="cd ~/_Work"
-alias code="cd ~/_Work/Code"
+alias jkcode="cd ~/_Work/Code"
 alias archive="cd ~/_Archive"
 
 # Personal

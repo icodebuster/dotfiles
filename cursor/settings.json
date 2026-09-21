@@ -52,5 +52,13 @@
     "editor.unicodeHighlight.ambiguousCharacters": false,
     "editor.multiCursorLimit": 100000,
     "cursor.composer.usageSummaryDisplay": "always",
-    "markdown-preview-enhanced.enablePreviewZenMode": true
+    "markdown-preview-enhanced.enablePreviewZenMode": true,
+    "gitlens.ai.model": "gitkraken",
+    "gitlens.ai.gitkraken.model": "gemini:gemini-2.5-flash",
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.currentLine.format": "${author, } ${agoOrDate}${' via  'pullRequest}${ • message|50?}",
+    "repomix.output.style": "markdown",
+    "window.autoDetectColorScheme": false,
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+    "cursor.composer.queueMessageDefaultBehavior": "steer"
 }
