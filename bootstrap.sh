@@ -138,7 +138,13 @@ if [[ "$brew_answer" =~ ^[Yy]$ ]]; then
     trap 'rm -f "$tmp_brewfile"' EXIT
     printf '%s\n' "${cask_lines[@]}" > "$tmp_brewfile"
     echo "==> Installing selected casks..."
-    brew bundle --no-upgrade --file="$tmp_brewfile"
+    # A single flaky cask (app already running, network blip, etc.) shouldn't
+    # abort the rest of bootstrap.sh — dotfiles stowing below is independent
+    # of whether every GUI app installed cleanly.
+    if ! brew bundle --no-upgrade --file="$tmp_brewfile"; then
+      echo "WARNING: one or more casks failed to install (see errors above)." >&2
+      echo "Continuing with the rest of bootstrap.sh — re-run this script to retry." >&2
+    fi
   fi
 fi
 

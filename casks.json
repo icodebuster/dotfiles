@@ -42,7 +42,7 @@
   "Media": [
     { "name": "blackhole-2ch", "description": "Virtual audio driver (2 ch)", "default": false },
     { "name": "blackhole-16ch", "description": "Virtual audio driver (16 ch)", "default": false },
-    { "name": "handbrake", "description": "Video transcoder", "default": false },
+    { "name": "handbrake-app", "description": "Video transcoder", "default": false },
     { "name": "stremio", "description": "Media center for streaming and torrents", "default": false },
     { "name": "vlc", "description": "Media player", "default": true }
   ],
