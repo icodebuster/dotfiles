@@ -1,0 +1,68 @@
+{
+  "AI": [
+    { "name": "chatgpt", "description": "OpenAI ChatGPT desktop app", "default": true },
+    { "name": "claude", "description": "Anthropic Claude desktop app", "default": true },
+    { "name": "steipete/tap/codexbar", "description": "Codex AI menu bar app", "default": true, "trusted": true }
+  ],
+  "Browsers": [
+    { "name": "firefox", "description": "Web browser", "default": true },
+    { "name": "google-chrome", "description": "Web browser", "default": true }
+  ],
+  "Cloud Storage": [
+    { "name": "dropbox", "description": "Cloud file storage and sync", "default": false },
+    { "name": "google-drive", "description": "Cloud file storage and sync", "default": false }
+  ],
+  "Communication": [
+    { "name": "discord", "description": "Voice, video, and text chat for communities", "default": false },
+    { "name": "readdle-spark", "description": "Email client (Spark Desktop)", "default": false },
+    { "name": "slack", "description": "Team chat and collaboration", "default": false },
+    { "name": "whatsapp", "description": "Messaging client", "default": false },
+    { "name": "zoom", "description": "Video conferencing", "default": false }
+  ],
+  "Design": [
+    { "name": "figma", "description": "Collaborative interface design tool", "default": false }
+  ],
+  "Dev": [
+    { "name": "android-studio", "description": "IDE for Android app development", "default": false }, 
+    { "name": "cursor", "description": "AI-powered code editor", "default": false },
+    { "name": "cursor-cli", "description": "Cursor editor CLI", "default": false },
+    { "name": "db-browser-for-sqlite", "description": "SQLite database browser", "default": true },
+    { "name": "filemaker-pro", "description": "Relational database and app development platform", "default": false },
+    { "name": "ghostty", "description": "GPU-accelerated terminal emulator", "default": true },
+    { "name": "gitkraken", "description": "Git client", "default": false },
+    { "name": "gitkraken-cli", "description": "Git client CLI", "default": false },
+    { "name": "iterm2", "description": "Terminal emulator", "default": false },
+    { "name": "ngrok", "description": "Secure tunnels to localhost", "default": false },
+    { "name": "orbstack", "description": "Fast Docker and Linux on macOS", "default": false },
+    { "name": "postman", "description": "API development and testing client", "default": false },
+    { "name": "provisionql", "description": "QuickLook for provisioning profiles", "default": false },
+    { "name": "sourcetree", "description": "Git GUI client", "default": false },
+    { "name": "visual-studio-code", "description": "Code editor", "default": true }
+  ],
+  "Media": [
+    { "name": "blackhole-2ch", "description": "Virtual audio driver (2 ch)", "default": false },
+    { "name": "blackhole-16ch", "description": "Virtual audio driver (16 ch)", "default": false },
+    { "name": "handbrake", "description": "Video transcoder", "default": false },
+    { "name": "stremio", "description": "Media center for streaming and torrents", "default": false },
+    { "name": "vlc", "description": "Media player", "default": true }
+  ],
+  "Peripherals": [
+    { "name": "logitech-options", "description": "Config app for older Logitech devices (deprecated upstream, disabled 2026-12-12)", "default": false },
+    { "name": "logitune", "description": "Config app for Logitech webcams/headsets/docks", "default": false }
+  ],
+  "Productivity": [
+    { "name": "nikitabobko/tap/aerospace", "description": "Tiling window manager for macOS", "default": true, "trusted": true },
+    { "name": "alfred", "description": "App launcher, search, and workflow automation", "default": false },
+    { "name": "grammarly-desktop", "description": "AI writing assistant", "default": false },
+    { "name": "notion", "description": "Notes, docs, and project management", "default": false },
+    { "name": "obsidian", "description": "Markdown-based knowledge base", "default": false },
+    { "name": "rectangle", "description": "Window snapping and management", "default": true }
+  ],
+  "Utilities": [
+    { "name": "anydesk", "description": "Remote desktop access", "default": false },
+    { "name": "cleanmymac", "description": "Mac cleanup and optimization utility", "default": false },
+    { "name": "free-download-manager", "description": "Download manager", "default": false },
+    { "name": "gemini", "description": "Duplicate and similar file finder (MacPaw)", "default": false },
+    { "name": "hazel", "description": "Automated file organization rules", "default": false }
+  ]
+}

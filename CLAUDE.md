@@ -89,7 +89,8 @@ Config files live in `cursor/` and `vscode/` directories in the repo:
 
 ## Key Files
 
-- `Brewfile` — all Homebrew packages, casks, and fonts; update with `brew bundle dump --force`
+- `Brewfile` — taps, CLI/dev `brew` formulae, and font casks; update with `brew bundle dump --force` (app casks live in `casks.json` instead — see below)
+- `casks.json` — manifest of app casks (name, description, `default`, optional `trusted`); `bootstrap.sh` installs `default: true` entries silently and prompts per-app for the rest. Hand-edit the `default` flags to change what installs without asking
 - `bootstrap.sh` — idempotent setup script; safe to re-run
 - `.stow-local-ignore` — files Stow skips (README, Brewfile, bootstrap.sh, .git, config-plan.md)
 - `git/.gitignore_global` — global git ignore patterns

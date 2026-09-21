@@ -83,11 +83,63 @@ if ! command -v brew &>/dev/null; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# jq is required to parse casks.json below, regardless of what the user answers
+# to the Brewfile prompt.
+if ! command -v jq &>/dev/null; then
+  echo "==> Installing jq..."
+  brew install jq
+fi
+
+CASKS_JSON="$DOTFILES_DIR/casks.json"
+
 # Install packages from Brewfile
 read -rp "==> Install Homebrew packages from Brewfile? [y/N] " brew_answer
 if [[ "$brew_answer" =~ ^[Yy]$ ]]; then
   echo "==> Installing missing Homebrew packages..."
   brew bundle --no-upgrade --file="$DOTFILES_DIR/Brewfile"
+
+  # --- Cask selection (casks.json) ---
+  # Casks are kept out of the Brewfile so installing them can be gated per-app:
+  # entries marked "default": true install silently, everything else prompts.
+  # casks.json is an object keyed by category, each holding an array of apps.
+  if [[ ! -f "$CASKS_JSON" ]]; then
+    echo "ERROR: casks.json not found at $CASKS_JSON" >&2
+    exit 1
+  fi
+  if ! jq empty "$CASKS_JSON" 2>/dev/null; then
+    echo "ERROR: casks.json is not valid JSON: $CASKS_JSON" >&2
+    exit 1
+  fi
+
+  cask_lines=()
+  while IFS= read -r entry <&3; do
+    name=$(jq -r '.name' <<<"$entry")
+    description=$(jq -r '.description' <<<"$entry")
+    is_default=$(jq -r '.default // false' <<<"$entry")
+    is_trusted=$(jq -r '.trusted // false' <<<"$entry")
+
+    queue="$is_default"
+    if [[ "$queue" != "true" ]]; then
+      read -rp "==> Install ${name} — ${description}? [y/N] " cask_answer
+      [[ "$cask_answer" =~ ^[Yy]$ ]] && queue="true" || queue="false"
+    fi
+
+    if [[ "$queue" == "true" ]]; then
+      if [[ "$is_trusted" == "true" ]]; then
+        cask_lines+=("cask \"$name\", trusted: true")
+      else
+        cask_lines+=("cask \"$name\"")
+      fi
+    fi
+  done 3< <(jq -c '.[][]' "$CASKS_JSON")
+
+  if ((${#cask_lines[@]} > 0)); then
+    tmp_brewfile="$(mktemp "${TMPDIR:-/tmp}/dotfiles-casks.XXXXXX")"
+    trap 'rm -f "$tmp_brewfile"' EXIT
+    printf '%s\n' "${cask_lines[@]}" > "$tmp_brewfile"
+    echo "==> Installing selected casks..."
+    brew bundle --no-upgrade --file="$tmp_brewfile"
+  fi
 fi
 
 if ! command -v stow &>/dev/null; then
@@ -134,6 +186,7 @@ fi
 
 echo "==> Stowing dotfiles (repo always wins)..."
 cd "$DOTFILES_DIR"
+mkdir -p "$HOME/.config"
 _remove_stow_conflicts "$HOME/.config" "${CONFIG_PKGS[@]}"
 _remove_stow_conflicts "$HOME" "${HOME_PKGS[@]}"
 stow --adopt -R -v -t "$HOME/.config" "${CONFIG_PKGS[@]}"

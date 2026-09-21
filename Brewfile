@@ -1,8 +1,12 @@
 # Taps
+# Third-party formula/cask lines below carry `trusted: true` themselves
+# (Homebrew's Tap Trust feature). `dart-lang/dart` is trusted at the tap
+# level since fvm pulls Dart SDK formulae from it dynamically by version.
 tap "antoniorodr/memo"
-tap "dart-lang/dart"
+tap "dart-lang/dart", trusted: true
 tap "leoafarias/fvm"
 tap "nikitabobko/tap"
+tap "openclaw/tap"
 tap "steipete/tap"
 
 # Shell and prompt
@@ -28,7 +32,6 @@ brew "git-extras"                   # Extra git utilities
 brew "gh"                           # GitHub CLI
 brew "duti"                         # Set default apps for file types on macOS
 brew "stow"                         # Symlink farm manager (for dotfiles)
-brew "gitkraken-cli"                # Git client CLI
 brew "direnv"                       # Environment variable manager loader that loads .envrc on the current directory.
 
 # Media and files
@@ -55,7 +58,7 @@ brew "yarn"                         # JavaScript package manager
 
 # Dev - Mobile
 brew "fastlane"                     # Build and release mobile apps
-brew "leoafarias/fvm/fvm"           # Flutter SDK version manager
+brew "leoafarias/fvm/fvm", trusted: true  # Flutter SDK version manager
 brew "ideviceinstaller"             # Manage apps on iOS devices
 brew "watchman"                     # File watcher (used by React Native)
 
@@ -67,10 +70,10 @@ brew "gradle"                       # Build automation tool (use ./gradlew per p
 brew "awscli"                       # AWS command-line interface
 
 # AI / Productivity
-brew "antoniorodr/memo/memo"        # Manage Apple Notes and Reminders from CLI
-brew "steipete/tap/gogcli"          # Google CLI (Gmail, Calendar, Drive)
-brew "steipete/tap/imsg"            # Send/read iMessage from terminal
-brew "steipete/tap/summarize"       # Summarize links to clean text
+brew "antoniorodr/memo/memo", trusted: true   # Manage Apple Notes and Reminders from CLI
+brew "openclaw/tap/gogcli", trusted: true     # Google CLI (Gmail, Calendar, Drive) — formerly steipete/tap/gogcli
+brew "steipete/tap/imsg", trusted: true       # Send/read iMessage from terminal
+brew "steipete/tap/summarize", trusted: true  # Summarize links to clean text
 
 # Fonts
 cask "font-hack-nerd-font"              # Hack Nerd Font
@@ -90,18 +93,8 @@ cask "font-roboto-mono-nerd-font"       # Roboto Mono Nerd Font (Google)
 cask "font-symbols-only-nerd-font"      # Nerd Font icons only (patch any font)
 
 # Apps
-cask "nikitabobko/tap/aerospace"    # Tiling window manager for macOS
-cask "blackhole-2ch"                # Virtual audio driver (2 ch)
-cask "blackhole-16ch"               # Virtual audio driver (16 ch)
-cask "copilot-for-xcode"            # GitHub Copilot for Xcode
-cask "cursor-cli"                   # Cursor editor CLI
-cask "db-browser-for-sqlite"        # SQLite database browser
-cask "ngrok"                        # Secure tunnels to localhost
-cask "obsidian"                     # Markdown-based knowledge base
-cask "orbstack"                     # Fast Docker and Linux on macOS
-cask "provisionql"                  # QuickLook for provisioning profiles
-cask "steipete/tap/codexbar"        # Codex AI menu bar app
-cask "gitkraken"                    # Git client
+# App casks are managed via casks.json + bootstrap.sh's interactive installer,
+# not listed here directly.
 
 # ---------------------------------------------------------------------------
 # Redundant or rarely used — uncomment if needed
