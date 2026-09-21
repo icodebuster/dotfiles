@@ -216,4 +216,11 @@ read -rp "==> Restore editor settings and extensions? [y/N] " editor_answer
 if [[ "$editor_answer" =~ ^[Yy]$ ]]; then
   "$DOTFILES_DIR/scripts/editors.sh" restore
 fi
+
+# Restore Rectangle settings
+read -rp "==> Restore Rectangle settings? [y/N] " rectangle_answer
+if [[ "$rectangle_answer" =~ ^[Yy]$ ]]; then
+  "$DOTFILES_DIR/scripts/rectangle.sh" restore
+fi
+
 echo "==> Done! Restart your shell or run: source ~/.zshrc"

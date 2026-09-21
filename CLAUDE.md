@@ -19,6 +19,10 @@ chmod 400 ~/.ssh/*.pem
 # Sync editor settings (Cursor & VS Code)
 ./scripts/editors.sh export   # pull from app → repo
 ./scripts/editors.sh restore  # push from repo → app + install extensions
+
+# Sync Rectangle settings (export the config from the app's UI first)
+./scripts/rectangle.sh export   # copy an already-exported RectangleConfig.json → repo
+./scripts/rectangle.sh restore  # push from repo → Rectangle's config folder + relaunch
 ```
 
 ## Package Architecture
@@ -83,6 +87,13 @@ Config files live in `cursor/` and `vscode/` directories in the repo:
 | `extensions.txt` | ✓ | ✓ |
 | `extensions.md` | ✓ | ✓ |
 
+## Rectangle Config
+
+Rectangle stores its settings in the `com.knollsoft.Rectangle` macOS preferences domain, but it also has a native config JSON format (Preferences > General > Export/Import) that it auto-loads from `~/Library/Application Support/Rectangle/RectangleConfig.json` on launch — so it's **not stow-managed**, and `scripts/rectangle.sh` doesn't touch `defaults`/`plutil` at all:
+
+- `export [path]` — copies an already-exported config (default source: `~/Downloads/RectangleConfig.json`) into `rectangle/RectangleConfig.json`. Manual/occasional, like `editors.sh export` — Rectangle has no CLI/URL-scheme hook for triggering its own Export button, so you export from the app's UI first.
+- `restore` — copies `rectangle/RectangleConfig.json` into Rectangle's config folder and relaunches it; Rectangle picks up the file automatically on launch (then timestamps/retires it so it isn't reapplied next time). Fully automated — this is what `bootstrap.sh` calls.
+
 ## Environment Variables
 
 - `DOTFILES_DIR` — set in `.zshrc` to the repo root (resolved from the `.zshrc` symlink). Available to all shell functions.
@@ -92,6 +103,7 @@ Config files live in `cursor/` and `vscode/` directories in the repo:
 - `Brewfile` — taps, CLI/dev `brew` formulae, and font casks; update with `brew bundle dump --force` (app casks live in `casks.json` instead — see below)
 - `casks.json` — manifest of app casks (name, description, `default`, optional `trusted`); `bootstrap.sh` installs `default: true` entries silently and prompts per-app for the rest. Hand-edit the `default` flags to change what installs without asking
 - `bootstrap.sh` — idempotent setup script; safe to re-run
+- `rectangle/RectangleConfig.json` — Rectangle app settings; sync with `scripts/rectangle.sh` (see Rectangle Config above)
 - `.stow-local-ignore` — files Stow skips (README, Brewfile, bootstrap.sh, .git, config-plan.md)
 - `git/.gitignore_global` — global git ignore patterns
 - `zellij/zellij/layouts/dev.kdl` — Zellij layout launched by the `dev` shell function
