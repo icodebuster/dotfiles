@@ -99,14 +99,17 @@ cc() {
     cursor "$file"
 }
 
-git-local-email() {
+git-local-config() {
     if ! git rev-parse --is-inside-work-tree &>/dev/null; then
         echo "Not inside a git repository." >&2
         return 1
     fi
-    local email
+    local name email
+    vared -p "Local git name [Jobin Kurian]: " name
     vared -p "Local git email [jobink.dev@gmail.com]: " email
+    git config --local user.name "${name:-Jobin Kurian}"
     git config --local user.email "${email:-jobink.dev@gmail.com}"
+    echo "Set local user.name to: $(git config --local user.name)"
     echo "Set local user.email to: $(git config --local user.email)"
 }
 

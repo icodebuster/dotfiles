@@ -65,7 +65,7 @@ The `ssh/` package commits only the public SSH config (`ssh/.ssh/config`) which 
 | `tools.zsh` | Tool init: Starship, Zoxide, FZF, Atuin, syntax highlighting |
 | `dev_config.zsh` | Version managers: rbenv, pyenv, fnm, Go, Flutter, Java (lazy-loaded) |
 | `aliases.zsh` | 38 shell aliases |
-| `functions.zsh` | Helper functions: `xc`, `vc`, `git-local-email`, `dev`, `smartech-add-device` |
+| `functions.zsh` | Helper functions: `xc`, `vc`, `git-local-config`, `dev`, `smartech-add-device` |
 | `env_paths.zsh` | Extra PATH entries |
 | `secrets.zsh` | Sources `~/.secrets` (not committed) |
 
