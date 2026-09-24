@@ -223,4 +223,7 @@ if [[ "$rectangle_answer" =~ ^[Yy]$ ]]; then
   "$DOTFILES_DIR/scripts/rectangle.sh" restore
 fi
 
+# Default editor for text and code files
+"$DOTFILES_DIR/scripts/default-apps.sh"
+
 echo "==> Done! Restart your shell or run: source ~/.zshrc"

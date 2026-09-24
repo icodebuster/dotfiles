@@ -103,6 +103,7 @@ Rectangle stores its settings in the `com.knollsoft.Rectangle` macOS preferences
 - `Brewfile` — taps, CLI/dev `brew` formulae, and font casks; update with `brew bundle dump --force` (app casks live in `casks.json` instead — see below)
 - `casks.json` — manifest of app casks (name, description, `default`, optional `trusted`); `bootstrap.sh` installs `default: true` entries silently and prompts per-app for the rest. Hand-edit the `default` flags to change what installs without asking
 - `bootstrap.sh` — idempotent setup script; safe to re-run
+- `scripts/default-apps.sh` — prompts for VS Code (default) or Cursor and makes it the default app for text/code file types (UTI list inside the script); macOS asks to confirm each type when switching between editors
 - `rectangle/RectangleConfig.json` — Rectangle app settings; sync with `scripts/rectangle.sh` (see Rectangle Config above)
 - `.stow-local-ignore` — files Stow skips (README, Brewfile, bootstrap.sh, .git, config-plan.md)
 - `git/.gitignore_global` — global git ignore patterns

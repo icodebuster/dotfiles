@@ -123,7 +123,14 @@ screenshot-location() {
         dir="${dir:-$default}"
     fi
     mkdir -p "$dir"
-    defaults write com.apple.screencapture location "$dir"
+    dir="${dir:A}"
+    local key
+    for key in location location-last location-screenshot location-screenrecording; do
+        defaults write com.apple.screencapture "$key" "$dir"
+    done
+    for key in target target-screenshot target-screenrecording; do
+        defaults write com.apple.screencapture "$key" file
+    done
 
     local reply set_jpeg
     read -r "reply?Also set screenshot format to JPEG (smaller files than PNG)? [y/N] "
@@ -133,6 +140,7 @@ screenshot-location() {
     fi
 
     killall SystemUIServer
+    killall screencaptureui 2>/dev/null
     echo "Screenshot location set to: $dir"
     [[ -n "$set_jpeg" ]] && echo "Screenshot format set to: JPEG"
 }
