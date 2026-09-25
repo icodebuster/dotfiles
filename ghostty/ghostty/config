@@ -9,7 +9,7 @@ window-padding-x = 20
 window-padding-y = 20
 
 # Font
-# font-family = "MenloLGS NF"
+font-family = "MesloLGS Nerd Font"
 font-size = 14
 
 # Start Directory

@@ -2,7 +2,7 @@
     "editor.accessibilitySupport": "off",
     "files.autoSave": "onFocusChange",
     "terminal.integrated.defaultProfile.linux": "zsh",
-    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
     "terminal.integrated.env.osx": {
         "FIG_NEW_SESSION": "1"
     },

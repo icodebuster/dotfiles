@@ -90,13 +90,13 @@ if ! command -v jq &>/dev/null; then
   brew install jq
 fi
 
-CASKS_JSON="$DOTFILES_DIR/casks.json"
+CASKS_JSON="$DOTFILES_DIR/homebrew/casks.json"
 
 # Install packages from Brewfile
 read -rp "==> Install Homebrew packages from Brewfile? [y/N] " brew_answer
 if [[ "$brew_answer" =~ ^[Yy]$ ]]; then
   echo "==> Installing missing Homebrew packages..."
-  brew bundle --no-upgrade --file="$DOTFILES_DIR/Brewfile"
+  brew bundle --no-upgrade --file="$DOTFILES_DIR/homebrew/Brewfile"
 
   # --- Cask selection (casks.json) ---
   # Casks are kept out of the Brewfile so installing them can be gated per-app:

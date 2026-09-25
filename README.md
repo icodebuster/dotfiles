@@ -15,7 +15,7 @@ cd ~/dotfiles
 This will:
 
 1. Install Homebrew (if missing)
-2. Install all packages from the `Brewfile`
+2. Install all packages from `homebrew/Brewfile`
 3. Bail if there are uncommitted changes in package directories
 4. Optionally back up existing dotfiles before overwriting
 5. Symlink all configs to the right places via `stow --adopt`
@@ -81,9 +81,9 @@ Each editor directory contains:
 | `extensions.txt`   | Extension IDs for automated install      |
 | `extensions.md`    | Categorized extension list for reference |
 
-## Homebrew (Brewfile)
+## Homebrew (`homebrew/`)
 
-The `Brewfile` tracks all formulae, casks, and fonts. To see what's changed since the last snapshot:
+`homebrew/Brewfile` tracks formulae, taps, and fonts; app casks live in `homebrew/casks.json`. To see what's changed since the last snapshot:
 
 ```bash
 brew-dump           # show new/stale packages vs Brewfile

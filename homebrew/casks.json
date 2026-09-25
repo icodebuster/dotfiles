@@ -2,6 +2,7 @@
   "AI": [
     { "name": "chatgpt", "description": "OpenAI ChatGPT desktop app", "default": true },
     { "name": "claude", "description": "Anthropic Claude desktop app", "default": true },
+    { "name": "claude-code", "description": "Anthropic Claude Code CLI", "default": true },
     { "name": "steipete/tap/codexbar", "description": "Codex AI menu bar app", "default": true, "trusted": true }
   ],
   "Browsers": [

@@ -1,6 +1,7 @@
 ai-dl.enlighter
 albymor.increment-selection
 alefragnani.bookmarks
+alefragnani.project-manager
 anseki.vscode-color
 anthropic.claude-code
 anysphere.cursorpyright
@@ -36,14 +37,13 @@ nuxt.mdc
 nuxtr.nuxtr-vscode
 openai.chatgpt
 oracle.oracle-java
-rebornix.ruby
 redhat.vscode-xml
 redhat.vscode-yaml
 ritwickdey.liveserver
 saoudrizwan.claude-dev
 shd101wyy.markdown-preview-enhanced
+shopify.ruby-lsp
 tamasfe.even-better-toml
 techer.open-in-browser
 vue.volar
-wingrunr21.vscode-ruby
 yzhang.markdown-all-in-one

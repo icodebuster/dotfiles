@@ -41,4 +41,14 @@ for uti in "${UTIS[@]}"; do
   [[ "$(duti -d "$uti" 2>/dev/null)" == "$bundle_id" ]] && continue
   duti -s "$bundle_id" "$uti" editor
 done
+
+# Extensions with dynamic UTIs (no declared type) can't be set by duti at all,
+# so use the NSWorkspace API via a Swift script.
+EXTENSIONS=(
+  code-workspace
+)
+for ext in "${EXTENSIONS[@]}"; do
+  [[ "$(duti -x "$ext" 2>/dev/null | tail -1)" == "$bundle_id" ]] && continue
+  swift "$(dirname "$0")/set-default-app.swift" "$bundle_id" "$ext" || echo "  ⚠ Could not set .$ext" >&2
+done
 echo "  Done. Check a type with: duti -x md"

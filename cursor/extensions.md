@@ -31,8 +31,7 @@ This document lists all extensions used in Cursor, organized by category.
 | `ms-python.python` | Python language support and debugging | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.python) |
 | `ms-python.debugpy` | Python debugger | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy) |
 | `ms-python.vscode-python-envs` | Python environment management | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs) |
-| `rebornix.ruby` | Ruby language support | [Marketplace](https://marketplace.visualstudio.com/items?itemName=rebornix.ruby) |
-| `wingrunr21.vscode-ruby` | Enhanced Ruby development tools | [Marketplace](https://marketplace.visualstudio.com/items?itemName=wingrunr21.vscode-ruby) |
+| `shopify.ruby-lsp` | Ruby language server (replaces the deprecated Ruby extensions) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=shopify.ruby-lsp) |
 | `jnbt.vscode-rufo` | Ruby code formatter | [Marketplace](https://marketplace.visualstudio.com/items?itemName=jnbt.vscode-rufo) |
 | `dart-code.dart-code` | Dart language support | [Marketplace](https://marketplace.visualstudio.com/items?itemName=dart-code.dart-code) |
 | `dart-code.flutter` | Flutter development framework | [Marketplace](https://marketplace.visualstudio.com/items?itemName=dart-code.flutter) |
@@ -86,6 +85,7 @@ This document lists all extensions used in Cursor, organized by category.
 | Extension | Description | Link |
 |-----------|-------------|------|
 | `alefragnani.bookmarks` | Code bookmarking for quick navigation | [Marketplace](https://marketplace.visualstudio.com/items?itemName=alefragnani.bookmarks) |
+| `alefragnani.project-manager` | Save and switch between projects | [Marketplace](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager) |
 | `albymor.increment-selection` | Increment/decrement numbers in selections | [Marketplace](https://marketplace.visualstudio.com/items?itemName=albymor.increment-selection) |
 | `anseki.vscode-color` | Color picker and palette tools | [Marketplace](https://marketplace.visualstudio.com/items?itemName=anseki.vscode-color) |
 | `esbenp.prettier-vscode` | Code formatter for multiple languages | [Marketplace](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) |

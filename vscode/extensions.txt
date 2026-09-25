@@ -1,6 +1,7 @@
 ai-dl.enlighter
 albymor.increment-selection
 alefragnani.bookmarks
+alefragnani.project-manager
 anseki.vscode-color
 anthropic.claude-code
 bierner.markdown-mermaid
@@ -20,6 +21,7 @@ hollowtree.vue-snippets
 james-yu.latex-workshop
 jnbt.vscode-rufo
 johnpapa.vscode-peacock
+llvm-vs-code-extensions.lldb-dap
 mechatroner.rainbow-csv
 ms-azuretools.vscode-containers
 ms-azuretools.vscode-docker
@@ -35,16 +37,17 @@ mtxr.sqltools
 nuxt.mdc
 nuxtr.nuxtr-vscode
 openai.chatgpt
+openai.codex-audio
 oracle.oracle-java
-rebornix.ruby
 redhat.vscode-xml
 redhat.vscode-yaml
 ritwickdey.liveserver
 saoudrizwan.claude-dev
 shd101wyy.markdown-preview-enhanced
+shopify.ruby-lsp
+swiftlang.swift-vscode
 tamasfe.even-better-toml
 techer.open-in-browser
 tomoki1207.pdf
 vue.volar
-wingrunr21.vscode-ruby
 yzhang.markdown-all-in-one

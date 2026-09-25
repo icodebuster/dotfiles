@@ -8,6 +8,7 @@ This document lists all extensions used in VS Code, organized by category.
 |-----------|-------------|------|
 | `anthropic.claude-code` | Claude AI assistant for code generation and chat | [Marketplace](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code) |
 | `openai.chatgpt` | ChatGPT AI assistant for code generation and chat | [Marketplace](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt) |
+| `openai.codex-audio` | Voice input for OpenAI Codex | [Marketplace](https://marketplace.visualstudio.com/items?itemName=openai.codex-audio) |
 | `saoudrizwan.claude-dev` | Claude AI development assistant (Cline) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev) |
 | `ai-dl.enlighter` | Code syntax highlighting enhancement | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ai-dl.enlighter) |
 
@@ -31,13 +32,14 @@ This document lists all extensions used in VS Code, organized by category.
 | `ms-python.debugpy` | Python debugger | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy) |
 | `ms-python.vscode-pylance` | Fast Python language server | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) |
 | `ms-python.vscode-python-envs` | Python environment management | [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs) |
-| `rebornix.ruby` | Ruby language support | [Marketplace](https://marketplace.visualstudio.com/items?itemName=rebornix.ruby) |
-| `wingrunr21.vscode-ruby` | Enhanced Ruby development tools | [Marketplace](https://marketplace.visualstudio.com/items?itemName=wingrunr21.vscode-ruby) |
+| `shopify.ruby-lsp` | Ruby language server (replaces the deprecated Ruby extensions) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=shopify.ruby-lsp) |
 | `jnbt.vscode-rufo` | Ruby code formatter | [Marketplace](https://marketplace.visualstudio.com/items?itemName=jnbt.vscode-rufo) |
 | `dart-code.dart-code` | Dart language support | [Marketplace](https://marketplace.visualstudio.com/items?itemName=dart-code.dart-code) |
 | `dart-code.flutter` | Flutter development framework | [Marketplace](https://marketplace.visualstudio.com/items?itemName=dart-code.flutter) |
 | `fwcd.kotlin` | Kotlin language support | [Marketplace](https://marketplace.visualstudio.com/items?itemName=fwcd.kotlin) |
 | `oracle.oracle-java` | Java language support from Oracle | [Marketplace](https://marketplace.visualstudio.com/items?itemName=oracle.oracle-java) |
+| `swiftlang.swift-vscode` | Swift language support | [Marketplace](https://marketplace.visualstudio.com/items?itemName=swiftlang.swift-vscode) |
+| `llvm-vs-code-extensions.lldb-dap` | LLDB debugger (used for Swift/C/C++ debugging) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.lldb-dap) |
 
 ### .NET Development
 | Extension | Description | Link |
@@ -86,6 +88,7 @@ This document lists all extensions used in VS Code, organized by category.
 | Extension | Description | Link |
 |-----------|-------------|------|
 | `alefragnani.bookmarks` | Code bookmarking for quick navigation | [Marketplace](https://marketplace.visualstudio.com/items?itemName=alefragnani.bookmarks) |
+| `alefragnani.project-manager` | Save and switch between projects | [Marketplace](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager) |
 | `albymor.increment-selection` | Increment/decrement numbers in selections | [Marketplace](https://marketplace.visualstudio.com/items?itemName=albymor.increment-selection) |
 | `anseki.vscode-color` | Color picker and palette tools | [Marketplace](https://marketplace.visualstudio.com/items?itemName=anseki.vscode-color) |
 | `esbenp.prettier-vscode` | Code formatter for multiple languages | [Marketplace](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) |
@@ -107,7 +110,7 @@ This document lists all extensions used in VS Code, organized by category.
 
 ## Extension Count
 
-**Total**: 50 extensions
+**Total**: 53 extensions
 
 ## Usage Notes
 
