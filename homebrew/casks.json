@@ -48,7 +48,7 @@
     { "name": "vlc", "description": "Media player", "default": true }
   ],
   "Peripherals": [
-    { "name": "logitech-options", "description": "Config app for older Logitech devices (deprecated upstream, disabled 2026-12-12)", "default": false },
+    { "name": "logi-options+", "description": "Config app for Logitech mice and keyboards (replaces logitech-options)", "default": false },
     { "name": "logitune", "description": "Config app for Logitech webcams/headsets/docks", "default": false }
   ],
   "Productivity": [
