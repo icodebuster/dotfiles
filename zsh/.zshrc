@@ -1,5 +1,8 @@
 [[ -o interactive ]] && print "🟥 󰊠 icodebuster 󰊠 🟥"
 
+# Dotfiles repo root (resolved from the .zshrc symlink)
+export DOTFILES_DIR="${${(%):-%N}:A:h:h}"
+
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
