@@ -30,6 +30,7 @@ brew "wget"                         # Internet file retriever
 brew "fastfetch"                    # System info (like neofetch, faster)
 brew "git-extras"                   # Extra git utilities
 brew "gh"                           # GitHub CLI
+brew "bitwarden-cli"                # Bitwarden password manager CLI (bw)
 brew "duti"                         # Set default apps for file types on macOS
 brew "stow"                         # Symlink farm manager (for dotfiles)
 brew "direnv"                       # Environment variable manager loader that loads .envrc on the current directory.

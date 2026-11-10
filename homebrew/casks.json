@@ -59,6 +59,9 @@
     { "name": "obsidian", "description": "Markdown-based knowledge base", "default": false },
     { "name": "rectangle", "description": "Window snapping and management", "default": true }
   ],
+  "Security": [
+    { "name": "bitwarden", "description": "Bitwarden password manager desktop app", "default": true }
+  ],
   "Utilities": [
     { "name": "anydesk", "description": "Remote desktop access", "default": false },
     { "name": "cleanmymac", "description": "Mac cleanup and optimization utility", "default": false },
